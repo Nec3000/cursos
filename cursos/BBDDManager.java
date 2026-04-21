@@ -1,4 +1,4 @@
-package cursos;
+package Prac2BD.cursos;
 
 import java.sql.*;
 
@@ -12,19 +12,20 @@ public class BBDDManager {
     public BBDDManager(String user, String password) {
         this.user = user;
         this.password = password;
+        host = "localhost:3306";
     }
 
     public String url() {
         return "jdbc:mysql://" + host + "/" + db;
     }
 
-    public StringWriter run(DataBaseTask[] tasks, String[] dataArray, boolean autoCommit) throws SQLException {
+    public StringWriter run(DataBaseTask[] tasks, String[] dataArray, boolean autoCommit) throws SQLException,BBDDException {
         StringWriter result = new StringWriter();
         conn = DriverManager.getConnection(url(),user,password);
         conn.setAutoCommit(autoCommit);
-        CreateTable crea = tasks[0];
-        crea.run(conn,"");
+        tasks[0].run(conn,"");
 
-        return result.add("fin");
+        result.add("fin");
+        return result;
     }
 }

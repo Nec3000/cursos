@@ -1,4 +1,4 @@
-package cursos;
+package Prac2BD.cursos;
 public class BBDDException extends Exception {
 
     private String when;

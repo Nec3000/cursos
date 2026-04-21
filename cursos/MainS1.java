@@ -1,13 +1,13 @@
-package cursos;
+package Prac2BD.cursos;
 
 import java.sql.SQLException;
 
 public class MainS1 {
 
     // Comprobar
-    public static void test() throws SQLException{
+    public static void test() throws SQLException, BBDDException {
         // Crea el gestor de conexiones
-        BBDDManager cm = new BBDDManager("alumno","bbdd-upm");
+        BBDDManager cm = new BBDDManager("","bbdd-upm");
 
         // Crear las tareas
         DataBaseTask[] tasks = {
@@ -20,7 +20,7 @@ public class MainS1 {
         System.out.println(result);
     }
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, BBDDException {
         test();
     }
 }

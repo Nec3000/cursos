@@ -1,4 +1,4 @@
-package cursos;
+package Prac2BD.cursos;
 
 import java.util.ArrayList;
 
