@@ -7,7 +7,7 @@ public class MainS1 {
     // Comprobar
     public static void test() throws SQLException, BBDDException {
         // Crea el gestor de conexiones
-        BBDDManager cm = new BBDDManager("","bbdd-upm");
+        BBDDManager cm = new BBDDManager("alumno","bbdd-upm");
 
         // Crear las tareas
         DataBaseTask[] tasks = {
