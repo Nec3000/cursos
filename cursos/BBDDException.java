@@ -1,5 +1,4 @@
 package cursos;
-
 public class BBDDException extends Exception {
 
     private String when;
