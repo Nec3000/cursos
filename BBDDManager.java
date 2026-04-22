@@ -35,13 +35,11 @@ public class BBDDManager {
                 }
             }
         } catch (SQLException e) {
-            // Errores al conectar o fijar autocommit
             result.add("Connection:" + e.getMessage() + ";");
         } catch (Exception e) {
-            // Cualquier otra excepción
             result.add("Otro:" + e.getMessage() + ";");
         }
-        result.add("fin"); // Siempre al terminar
+        result.add("fin");
         return result;
     }
 }

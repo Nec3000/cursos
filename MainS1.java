@@ -5,7 +5,7 @@ import java.sql.SQLException;
 public class MainS1 {
 
     // Comprobar
-    public static void test() throws SQLException, BBDDException {
+    public static void test() {
         // Crea el gestor de conexiones
         BBDDManager cm = new BBDDManager("alumno","bbdd-upm");
 
@@ -20,7 +20,7 @@ public class MainS1 {
         System.out.println(result);
     }
 
-    public static void main(String[] args) throws SQLException, BBDDException {
+    public static void main(String[] args) {
         test();
     }
 }
