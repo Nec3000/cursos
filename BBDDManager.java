@@ -27,16 +27,20 @@ public class BBDDManager {
                     tasks[i].run(conn, dataArray[i]);
                 } catch (SQLException e) {
                     if (!autoCommit) conn.rollback();
-                    result.add("SQL:" + e.getMessage() + ";");
+                    result.add("SQL:" + e.getMessage());
+                    e.printStackTrace();
                 } catch (BBDDException e) {
                     if (!autoCommit) conn.commit();
-                    result.add("Task:" + e.when() + ";" + e.getMessage() + ";");
+                    result.add("Task:" + e.when() + "," +  e.getMessage() ) ;
+                    e.printStackTrace();
                 }
             }
         } catch (SQLException e) {
-            result.add("Connection:" + e.getMessage() + ";");
+            result.add("Connection:" + e.getMessage());
+            e.printStackTrace();
         } catch (Exception e) {
-            result.add("Otro:" + e.getMessage() + ";");
+            result.add("Otro:" + e.getMessage());
+            e.printStackTrace();
         }
         result.add("fin");
         return result;

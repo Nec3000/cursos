@@ -9,12 +9,12 @@ public class MainS2 {
 
         // Crear las tareas
         DataBaseTask[] tasks = {
-        	//new InsertaUnaFilaImparte(),
+        	new InsertaUnaFilaImparte(),
             new InsertaImparteDesdeCSV()
         };
         String[] data = {
-        	//"7,3,2,4,",
-            "_imparte.csv"
+        	"7,3,2,4,14/03/2025",
+            "src/cursos/_imparte.csv"
         };
 
         // Llamar a run:
