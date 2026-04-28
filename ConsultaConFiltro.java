@@ -18,21 +18,24 @@ public class ConsultaConFiltro extends ConsultaConResultado<Properties> {
     @Override
     public void run(Connection conn, String data) throws BBDDException, SQLException {
     	if(data.isEmpty()) {
-    		throw new BBDDException(null,"filtro vacío");
+    		throw new BBDDException(null,"filtro vacio");
     	}
-        try(PreparedStatement psI= conn.prepareStatement("SELECT * FROM profesor WHERE profesor.id=(SELECT profesor_id FROM imparte WHERE n_modulo=(SELECT n_modulo FROM modulo WHERE titulo =?)) ORDER BY apellido1 ASC")){
-        	psI.setString(1,data);
+        super.resultado = new ArrayList<Properties>();
+        try(PreparedStatement psI= conn.prepareStatement("SELECT p.*, m.curso_id, m.titulo FROM profesor p JOIN imparte i ON p.id = i.profesor_id JOIN modulo m ON i.curso_id = m.curso_id AND i.n_modulo = m.n_modulo WHERE m.titulo LIKE ? ORDER BY p.apellido1 ASC")){
+        	psI.setString(1,"%"+data+"%");
         	ResultSet rs1 = psI.executeQuery();
             while(rs1.next()) {
                 String apellido1 = rs1.getString("apellido1");
                 String apellido2 = rs1.getString("apellido2");
                 String nombre = rs1.getString("nombre");
-                String datos = "curso_id"+"-"+data;
+                String curso_id = rs1.getString("curso_id");
+                String titulo = rs1.getString("titulo");
+                String datos = curso_id+"-"+titulo;
                 Properties fila = new Properties(nombre, apellido1, apellido2,datos);
                 resultado.add(fila);
             }
-        }catch(Exception e) {
-        	
+        }catch(SQLException e) {
+        	throw new SQLException(e);
         }
     }
 }

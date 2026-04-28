@@ -16,10 +16,10 @@ public class ConsultaSimple extends ConsultaConResultado<Properties> {
      */
     @Override
     public void run(Connection conn, String data) throws BBDDException, SQLException {
-        data = data.toUpperCase();
         super.resultado = new ArrayList<Properties>();
+        data = data.toUpperCase();
         if (!(data.equals("ASC") || data.equals("DESC"))) {
-            throw new BBDDException(null, "ordenado");
+            throw new BBDDException(null, "ordenando");
         }
         if (data.equals("ASC")) {
             try (PreparedStatement ps1 = conn.prepareStatement("SELECT * FROM profesor ORDER BY apellido1 ASC")) {
