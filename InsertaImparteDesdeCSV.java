@@ -14,8 +14,6 @@ public class InsertaImparteDesdeCSV implements DataBaseTask {
             while(sc.hasNextLine()){
                 String linea = sc.nextLine();
                 String []datos = linea.split(",");
-
-<<<<<<< HEAD
                 try(PreparedStatement ps = conn.prepareStatement("INSERT INTO imparte(profesor_id,curso_id,n_modulo,aula_id,fecha) VALUES(?,?,?,?,?)")) {
                     ps.setInt(1, Integer.parseInt(datos[0].trim()));
                     ps.setInt(2, Integer.parseInt(datos[1].trim()));
@@ -33,18 +31,6 @@ public class InsertaImparteDesdeCSV implements DataBaseTask {
 
                 catch (Exception e) {
                     throw new BBDDException(e,"Insertando");
-=======
-                try(PreparedStatement ps = conn.prepareStatement("INSERT INTO imparte(profesor_id,curso_id,n_modulo,aula_id,fecha) VALUES(?,?,?,?,?)")){
-                ps.setInt(1, Integer.parseInt(datos[0].trim()));
-                ps.setInt(2, Integer.parseInt(datos[1].trim()));
-                ps.setInt(3, Integer.parseInt(datos[2].trim()));
-                ps.setInt(4, Integer.parseInt(datos[3].trim()));
-                Date date = Date.valueOf(datos[4].trim());
-                ps.setDate(5, date);
-                int res = ps.executeUpdate();
-                }catch(Exception e){
-                	e.printStackTrace();
->>>>>>> 7cda0af (prueba)
                 }
             }
         } catch ( Exception e) {
